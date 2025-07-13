@@ -1,4 +1,4 @@
-# Profitable Flutter App Template
+# Flutter App Template
 
 This template provides a professional, scalable, and production-ready foundation for building Flutter applications designed for monetization through ads. It comes pre-configured with a suite of best-in-class libraries and follows common patterns used by experienced Flutter developers.
 

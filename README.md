@@ -129,21 +129,14 @@ final response = await apiService.get('/posts');
 
 - **Purpose**: The official plugin for integrating Google Mobile Ads (AdMob).
 - **Why it's here**: This is the primary tool for monetizing the app. The template includes a ready-to-use banner ad implementation.
-- **Example (`lib/main.dart`)**: The `AppShell` widget initializes, loads, and displays a `BannerAd` at the bottom of the screen.
 
-```dart
-class _AppShellState extends State<AppShell> {
-  BannerAd? _bannerAd;
+### Theming
 
-  @override
-  void initState() {
-    super.initState();
-    _loadBannerAd(); // Loads the ad
-  }
+The template includes a basic theming system with support for light and dark modes. The theme is managed using a `ChangeNotifierProvider` and `ThemeData`.
 
-  // ... build method displays the ad in a SizedBox
-}
-```
+- **`lib/core/theme.dart`**: This file contains the theme definitions for light and dark modes. You can customize the colors, spacing, and typography in this file.
+- **`lib/core/theme_notifier.dart`**: This file contains the `ThemeNotifier` class, which manages the theme state.
+- **`SettingsScreen`**: The settings screen contains a switch for toggling between light and dark mode.
 
 ### `firebase_core` & `firebase_database`
 

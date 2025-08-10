@@ -13,6 +13,7 @@ class PrimaryButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
+        style: Theme.of(context).elevatedButtonTheme.style,
         child: Text(text),
       ),
     );

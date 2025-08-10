@@ -17,6 +17,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final posts = ref.watch(postsProvider);
+    final theme = Theme.of(context);
 
     return posts.when(
       data: (data) {
@@ -29,8 +30,8 @@ class HomeScreen extends ConsumerWidget {
             }
             final postIndex = index - 1;
             return ListTile(
-              title: Text(data[postIndex]['title']),
-              subtitle: Text(data[postIndex]['body']),
+              title: Text(data[postIndex]['title'], style: theme.textTheme.headlineMedium),
+              subtitle: Text(data[postIndex]['body'], style: theme.textTheme.bodyLarge),
             );
           },
         );

@@ -10,6 +10,9 @@ import 'package:profitable_flutter_app/router.dart';
 import 'package:profitable_flutter_app/service_locator.dart';
 import 'package:profitable_flutter_app/core/services/firebase_service.dart';
 import 'package:profitable_flutter_app/core/services/in_app_purchase_service.dart';
+import 'package:profitable_flutter_app/core/theme.dart';
+import 'package:profitable_flutter_app/core/theme_notifier.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +34,7 @@ void main() async {
     getIt<InAppPurchaseService>().initialize();
   }
 
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(ChangeNotifierProvider(create: (_) => ThemeNotifier(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -39,12 +42,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      title: 'Profitable Flutter App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+    return Consumer<ThemeNotifier>(
+      builder: (context, theme, child) {
+        return MaterialApp.router(
+          routerConfig: router,
+          title: 'Profitable Flutter App',
+          theme: theme.isDarkMode ? darkTheme : lightTheme,
+        );
+      },
     );
   }
 }
